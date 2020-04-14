@@ -24,7 +24,6 @@ package com.hmdzl.spspd.effects;
 import com.hmdzl.spspd.sprites.CharSprite;
 import com.watabou.glwrap.Blending;
 import com.watabou.noosa.Game;
-import com.watabou.noosa.Halo;
 import com.watabou.utils.PointF;
 
 public class ShieldHalo extends Halo {

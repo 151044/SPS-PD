@@ -61,14 +61,14 @@ public class Messages {
 	 */
 
 	private static String[] prop_files = new String[]{
-			"com.hmdzl.spspd.messages.actors.actors",
-			"com.hmdzl.spspd.messages.items.items",
-			"com.hmdzl.spspd.messages.levels.levels",
-			"com.hmdzl.spspd.messages.plants.plants",
-			"com.hmdzl.spspd.messages.scenes.scenes",
-			"com.hmdzl.spspd.messages.ui.ui",
-			"com.hmdzl.spspd.messages.windows.windows",
-			"com.hmdzl.spspd.messages.misc.misc"
+			"resources.com.hmdzl.spspd.messages.actors.actors",
+			"resources.com.hmdzl.spspd.messages.items.items",
+			"resources.com.hmdzl.spspd.messages.levels.levels",
+			"resources.com.hmdzl.spspd.messages.plants.plants",
+			"resources.com.hmdzl.spspd.messages.scenes.scenes",
+			"resources.com.hmdzl.spspd.messages.ui.ui",
+			"resources.com.hmdzl.spspd.messages.windows.windows",
+			"resources.com.hmdzl.spspd.messages.misc.misc"
 	};
 
 	static{

@@ -165,7 +165,7 @@ public class SewerLevel extends RegularLevel {
 			//addItemToSpawn(new Egg());
 		}
 
-		if (Dungeon.depth == 1){
+		if (Dungeon.depth == 2){
 			Tinkerer1 npc = new Tinkerer1();
 			do {
 				npc.pos = randomRespawnCell();
@@ -174,7 +174,7 @@ public class SewerLevel extends RegularLevel {
 			Actor.occupyCell(npc);
 		}
 		
-		if (Dungeon.depth == 2){
+		if (Dungeon.depth == 1){
 			addItemToSpawn(new Mushroom());
 		}
 				

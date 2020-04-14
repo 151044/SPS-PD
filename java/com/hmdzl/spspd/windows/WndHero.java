@@ -326,9 +326,41 @@ public class WndHero extends WndTabbed {
 				
 			
 			if (Dungeon.depth<26 && (Dungeon.dewDraw || Dungeon.dewWater)){
-			statSlot(Messages.get(this, "level_move"), Dungeon.level.currentmoves);
+				//A method unroll was performed here. statSlot() is converted to a custom write.
+				RenderedText txt = PixelScene.renderText(Messages.get(this, "level_move"), 8);
+				txt.y = pos;
+				add(txt);
+				txt = PixelScene.renderText(Integer.toString(Dungeon.level.currentmoves), 8);
+				//txt.measure();
+				txt.x = PixelScene.align(WIDTH * 0.6f);
+				txt.y = pos;
+				add(txt);
+				pos += GAP + txt.baseLine();
+
+				//Block 2 of mess
+				RenderedText txt2 = PixelScene.renderText(Messages.get(this, "level_max"), 8);
+				txt2.y = pos;
+				add(txt2);
+				txt2 = PixelScene.renderText(Integer.toString(Dungeon.pars[Dungeon.depth]), 8);
+				//txt.measure();
+				txt2.x = PixelScene.align(WIDTH * 0.6f);
+				txt2.y = pos;
+				add(txt2);
+				pos += GAP + txt2.baseLine();
+
+				//Block 3 of mess
+				RenderedText txt3 = PixelScene.renderText(Messages.get(this, "level_prefect"), 8);
+				txt3.y = pos;
+				add(txt3);
+				txt3 = PixelScene.renderText(Integer.toString(Statistics.prevfloormoves), 8);
+				//txt.measure();
+				txt3.x = PixelScene.align(WIDTH * 0.6f);
+				txt3.y = pos;
+				add(txt3);
+				pos += GAP + txt3.baseLine();
+			/*statSlot(Messages.get(this, "level_move"), Dungeon.level.currentmoves);
 			statSlot(Messages.get(this, "level_max"), Dungeon.pars[Dungeon.depth]);
-			statSlot(Messages.get(this, "level_prefect"),Statistics.prevfloormoves);
+			statSlot(Messages.get(this, "level_prefect"),Statistics.prevfloormoves);*/
 			/*if (Dungeon.hero.buff(Dewcharge.class) != null) {
 				float dewration = Dungeon.hero.buff(Dewcharge.class).dispTurns();
 			    statSlot(Messages.get(this, "level_left"), dewration);	

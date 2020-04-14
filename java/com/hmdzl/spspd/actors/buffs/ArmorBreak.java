@@ -87,6 +87,6 @@ public class ArmorBreak extends FlavourBuff {
 
 	@Override
 	public String desc() {
-		return Messages.get(this, "desc", dispTurns(),level());
+		return Messages.get(this, "desc",level(),dispTurns());
 	}
 }
