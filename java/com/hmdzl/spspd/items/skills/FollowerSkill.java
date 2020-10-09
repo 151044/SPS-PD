@@ -22,13 +22,14 @@ import com.hmdzl.spspd.Dungeon;
 import com.hmdzl.spspd.Assets;
 import com.hmdzl.spspd.actors.buffs.Blindness;
 import com.hmdzl.spspd.actors.buffs.Buff;
-import com.hmdzl.spspd.actors.buffs.Haste;
+import com.hmdzl.spspd.actors.buffs.HasteBuff;
 import com.hmdzl.spspd.actors.buffs.ParyAttack;
 import com.hmdzl.spspd.actors.buffs.Terror;
 import com.hmdzl.spspd.actors.mobs.Mob;
 import com.hmdzl.spspd.actors.mobs.npcs.NPC;
 import com.hmdzl.spspd.effects.Speck;
 import com.hmdzl.spspd.items.Item;
+import com.hmdzl.spspd.items.scrolls.InventoryScroll;
 import com.hmdzl.spspd.items.scrolls.ScrollOfUpgrade;
 import com.hmdzl.spspd.levels.Level;
 import com.hmdzl.spspd.scenes.GameScene;
@@ -95,7 +96,7 @@ public class FollowerSkill extends ClassSkill {
 				Buff.prolong(mob, Blindness.class, 10f);
 			}
 		}	
-	    Buff.affect(curUser, Haste.class,20f);
+	    Buff.affect(curUser, HasteBuff.class,20f);
 		curUser.spend(SKILL_TIME);
 		curUser.sprite.operate(curUser.pos);
 		curUser.busy();
@@ -106,7 +107,7 @@ public class FollowerSkill extends ClassSkill {
 
 	@Override
 	public void doSpecial4() {
-		GameScene.selectItem(itemSelector, WndBag.Mode.UPGRADEABLE, Messages.get(ScrollOfUpgrade.class,"prompt"));
+		GameScene.selectItem(itemSelector, WndBag.Mode.UPGRADEABLE, Messages.get(InventoryScroll.class,"title"));
 		
 	}
 
@@ -115,7 +116,7 @@ public class FollowerSkill extends ClassSkill {
 		public void onSelect(Item item) {
 			if (item != null) {
 				FollowerSkill.this.upgrade(item);
-				FollowerSkill.charge += 15;
+				FollowerSkill.charge += 40;
 			}
 		}
 	};

@@ -41,6 +41,7 @@ import com.hmdzl.spspd.effects.CellEmitter;
 import com.hmdzl.spspd.effects.particles.ElmoParticle;
 import com.hmdzl.spspd.items.KindOfArmor;
 import com.hmdzl.spspd.items.KindOfWeapon;
+import com.hmdzl.spspd.items.armor.normalarmor.BaseArmor;
 import com.hmdzl.spspd.items.armor.normalarmor.NormalArmor;
 import com.hmdzl.spspd.items.armor.normalarmor.RubberArmor;
 import com.hmdzl.spspd.items.armor.normalarmor.WoodenArmor;
@@ -50,6 +51,7 @@ import com.hmdzl.spspd.items.wands.WandOfFlow;
 import com.hmdzl.spspd.items.weapon.melee.FightGloves;
 import com.hmdzl.spspd.items.weapon.melee.Knuckles;
 import com.hmdzl.spspd.items.weapon.melee.special.FireCracker;
+import com.hmdzl.spspd.items.weapon.missiles.MoneyPack;
 import com.hmdzl.spspd.levels.Level;
 import com.hmdzl.spspd.mechanics.Ballistica;
 import com.hmdzl.spspd.messages.Messages;
@@ -150,7 +152,7 @@ public class YearBeast extends Mob {
 						GLog.w(Messages.get(this, "disarm"));
 					}
 				} else {
-					if (armor != null && !(armor instanceof WoodenArmor || armor instanceof RubberArmor || armor instanceof NormalArmor)
+					if (armor != null && !(armor instanceof WoodenArmor || armor instanceof RubberArmor || armor instanceof BaseArmor)
 							&& !armor.cursed) {
 						hero.belongings.armor = null;
 						Dungeon.level.drop(armor, hero.pos).sprite.drop();
@@ -177,7 +179,7 @@ public class YearBeast extends Mob {
 
 	@Override
 	public void damage(int dmg, Object src) {
-		if ( src instanceof FireCracker) {
+		if ( src instanceof FireCracker || src instanceof MoneyPack) {
 			times=0;
 		}
 
