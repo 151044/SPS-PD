@@ -41,6 +41,7 @@ import com.hmdzl.spspd.actors.buffs.MindVision;
 import com.hmdzl.spspd.actors.buffs.Shadows;
 import com.hmdzl.spspd.actors.hero.Hero;
 import com.hmdzl.spspd.actors.hero.HeroClass;
+import com.hmdzl.spspd.actors.hero.HeroSubClass;
 import com.hmdzl.spspd.actors.mobs.Bestiary;
 import com.hmdzl.spspd.actors.mobs.Mob;
 import com.hmdzl.spspd.actors.mobs.npcs.SheepSokoban;
@@ -49,15 +50,21 @@ import com.hmdzl.spspd.actors.mobs.npcs.SheepSokobanSwitch;
 import com.hmdzl.spspd.actors.mobs.pets.BlueDragon;
 import com.hmdzl.spspd.actors.mobs.pets.BugDragon;
 import com.hmdzl.spspd.actors.mobs.pets.Bunny;
+import com.hmdzl.spspd.actors.mobs.pets.ButterflyPet;
+import com.hmdzl.spspd.actors.mobs.pets.Chocobo;
 import com.hmdzl.spspd.actors.mobs.pets.CocoCat;
+import com.hmdzl.spspd.actors.mobs.pets.Datura;
+import com.hmdzl.spspd.actors.mobs.pets.DogPet;
 import com.hmdzl.spspd.actors.mobs.pets.Fly;
 import com.hmdzl.spspd.actors.mobs.pets.GentleCrab;
 import com.hmdzl.spspd.actors.mobs.pets.GoldDragon;
 import com.hmdzl.spspd.actors.mobs.pets.GreenDragon;
+import com.hmdzl.spspd.actors.mobs.pets.Kodora;
 import com.hmdzl.spspd.actors.mobs.pets.LeryFire;
 import com.hmdzl.spspd.actors.mobs.pets.LightDragon;
 import com.hmdzl.spspd.actors.mobs.pets.Monkey;
 import com.hmdzl.spspd.actors.mobs.pets.PET;
+import com.hmdzl.spspd.actors.mobs.pets.PigPet;
 import com.hmdzl.spspd.actors.mobs.pets.RedDragon;
 import com.hmdzl.spspd.actors.mobs.pets.RibbonRat;
 import com.hmdzl.spspd.actors.mobs.pets.Scorpion;
@@ -80,10 +87,12 @@ import com.hmdzl.spspd.items.Stylus;
 import com.hmdzl.spspd.items.Torch;
 import com.hmdzl.spspd.items.StoneOre;
 import com.hmdzl.spspd.items.Weightstone;
+import com.hmdzl.spspd.items.armor.Armor;
 import com.hmdzl.spspd.items.artifacts.DriedRose;
 import com.hmdzl.spspd.items.artifacts.TimekeepersHourglass;
 import com.hmdzl.spspd.items.misc.LuckyBadge;
 import com.hmdzl.spspd.items.potions.PotionOfMight;
+import com.hmdzl.spspd.items.potions.PotionOfOverHealing;
 import com.hmdzl.spspd.items.potions.PotionOfStrength;
 import com.hmdzl.spspd.items.scrolls.ScrollOfMagicalInfusion;
 import com.hmdzl.spspd.items.scrolls.ScrollOfUpgrade;
@@ -264,14 +273,13 @@ public abstract class Level implements Bundlable {
 		if (!Dungeon.bossLevel()) {
 			addItemToSpawn(Generator.random(Generator.Category.FOOD));
 			addItemToSpawn(Generator.random(Generator.Category.FOOD));
+			addItemToSpawn(new ScrollOfUpgrade());
+			
 			if (Dungeon.posNeeded()) {
 				addItemToSpawn(new PotionOfStrength());
 				Dungeon.limitedDrops.strengthPotions.count++;
 			}
-			if (Dungeon.souNeeded()) {
-				addItemToSpawn(new ScrollOfUpgrade());
-				Dungeon.limitedDrops.upgradeScrolls.count++;
-			}
+			
 			if (Random.Int(2) == 0) {
 				addItemToSpawn(new Stylus());
 				addItemToSpawn(new Weightstone());
@@ -284,14 +292,17 @@ public abstract class Level implements Bundlable {
 			if (Dungeon.hero.heroClass == HeroClass.SOLDIER)
 			bonus += 5;
 		
+			if (Dungeon.hero.subClass == HeroSubClass.SUPERSTAR)
+			bonus += 3;
+		
 			for (Buff buff : Dungeon.hero.buffs(AflyBless.class)) {
-			bonus += 5;
+			bonus += 3;
 		}	
 			if (Random.Float() > Math.pow(0.95, bonus)) {
 				if (Random.Int(2) == 0)
 					addItemToSpawn(new ScrollOfMagicalInfusion());
 				else
-					addItemToSpawn(new PotionOfMight());
+					addItemToSpawn(new PotionOfOverHealing());
 			}
 
 			DriedRose rose = Dungeon.hero.belongings.getItem(DriedRose.class);
@@ -351,7 +362,7 @@ public abstract class Level implements Bundlable {
 					viewDistance = (int) Math.ceil(viewDistance / 3f);
 					break;
 				}
-			} else if (Dungeon.depth > 21 && Dungeon.depth < 27) {
+			} else if (Dungeon.depth > 20 && Dungeon.depth < 27) {
 				switch (Random.Int(10)) {
 				case 1:
 					feeling = Feeling.WATER;
@@ -779,6 +790,30 @@ public abstract class Level implements Bundlable {
 				   if (Dungeon.hero.petType==22){
 					   YearPet pet = new YearPet();
 						  spawnPet(pet,petpos,heropos);					 
+				   }	
+				   if (Dungeon.hero.petType==23){
+					   DogPet pet = new DogPet();
+						  spawnPet(pet,petpos,heropos);					 
+				   }
+				   if (Dungeon.hero.petType==24){
+					   ButterflyPet pet = new ButterflyPet();
+						  spawnPet(pet,petpos,heropos);					 
+				   }
+				   if (Dungeon.hero.petType==25){
+					   Kodora pet = new Kodora();
+						  spawnPet(pet,petpos,heropos);					 
+				   }
+				   if (Dungeon.hero.petType==26){
+					   Chocobo pet = new Chocobo();
+						  spawnPet(pet,petpos,heropos);					 
+				   }	
+				   if (Dungeon.hero.petType==27){
+					   PigPet pet = new PigPet();
+						  spawnPet(pet,petpos,heropos);					 
+				   }	
+				   if (Dungeon.hero.petType==28){
+					   Datura pet = new Datura();
+						  spawnPet(pet,petpos,heropos);					 
 				   }					   
 				}
 				
@@ -1205,8 +1240,9 @@ public abstract class Level implements Bundlable {
 	
 	public Heap drop(Item item, int cell) {
 
-		if (item == null ){
+		if ((Dungeon.skins==5 && item instanceof Armor) || item == null ){
 
+		
 			//create a dummy heap, give it a dummy sprite, don't add it to the game, and return it.
 			//effectively nullifies whatever the logic calling this wants to do, including dropping items.
 			Heap heap = new Heap();

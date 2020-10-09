@@ -23,7 +23,7 @@ package com.hmdzl.spspd.items.misc;
 import com.hmdzl.spspd.Dungeon;
 import com.hmdzl.spspd.actors.buffs.Awareness;
 import com.hmdzl.spspd.actors.buffs.Buff;
-import com.hmdzl.spspd.actors.buffs.Haste;
+import com.hmdzl.spspd.actors.buffs.HasteBuff;
 import com.hmdzl.spspd.actors.buffs.Hunger;
 import com.hmdzl.spspd.actors.buffs.MechArmor;
 import com.hmdzl.spspd.actors.buffs.MindVision;
@@ -74,7 +74,7 @@ public class BShovel extends Item {
 	@Override
 	public ArrayList<String> actions(Hero hero ) {
 		ArrayList<String> actions = super.actions( hero );
-		if (charge >= 75){
+		if (charge >= 65){
 		actions.add(AC_USE);
 		}
         actions.remove( AC_THROW );
@@ -85,7 +85,7 @@ public class BShovel extends Item {
 	@Override
 	public void execute( final Hero hero, String action ) {		
       if( action.equals( AC_USE ) ){
-      	if(charge < 75){
+      	if(charge < 65){
 		  GLog.i(Messages.get(BShovel.class, "break"));
 		  return;
       	} else {
@@ -107,7 +107,7 @@ public class BShovel extends Item {
 						hunger.satisfy(-10);
 						BuffIndicator.refreshHero();
 				}
-				charge-=75;
+				charge-=65;
 
 		switch (Random.Int (6)) {
 			case 0 :
@@ -115,7 +115,7 @@ public class BShovel extends Item {
 			GLog.p(Messages.get(BShovel.class,"mob"));
 			break;
 			case 1 :
-			Buff.affect(hero,Haste.class,5f);
+			Buff.affect(hero,HasteBuff.class,5f);
 			GLog.p(Messages.get(BShovel.class,"haste"));
 			break;
 			case 2 :
@@ -149,7 +149,7 @@ public class BShovel extends Item {
 
 	@Override
 	public String status() {
-		return Messages.format("%d", (int)charge/75);
+		return Messages.format("%d", (int)charge/65);
 	}
 	
 	@Override

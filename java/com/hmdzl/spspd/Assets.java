@@ -340,8 +340,35 @@ public class Assets {
 	public static final String ICE13 = "ice13.png";
 
 	public static final String FIRERABBIT = "firerabbit.png";
+	public static final String ICERABBIT = "icerabbit.png";
 	public static final String MANY_SKELETON = "manyskeleton.png";
 	public static final String BEAST_YEAR = "beastyear.png";
+
+	public static final String CATSHEEP = "catsheep.png";
+	public static final String BLACKMEOW = "blackmeow.png";
+    public static final String MOB_BAMBOO = "bamboo.png";
+
+
+	public static final String GREATMOSS = "greatmoss.png";
+
+	public static final String NEW_SPINNER = "newspinner.png";
+	public static final String NEW_GHOST = "newghost.png";
+	public static final String NEW_SNAKE = "newsnake.png";
+	public static final String FRIEND_DEMON = "frienddemon.png";
+
+	public static final String ASHWOLF = "ashwolf.png";
+	public static final String DOGPET = "dog.png";
+	public static final String BUTTERFLYPET = "butterfly.png";
+	public static final String CHOCOBO = "chocobo.png";
+	public static final String KODORA = "kodora.png";
+
+	public static final String ATV9 = "atv9.png";
+
+	public static final String NEW_DARGON_01 = "newdargon01.png";
+	public static final String NEW_DARGON_02 = "newdargon02.png";
+
+	public static final String PIG_PET = "pig.png";
+	public static final String DATURA = "datura.png";
 
 }
 
